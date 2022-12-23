@@ -1,9 +1,17 @@
-﻿using werehouseManagement.Entities.Base;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System;
+using warehouseManagement.Entities.Base;
 
-namespace werehouseManagement.NewFolder
+namespace warehouseManagement.NewFolder
 {
     class Shipments
     {
-        // shipment number, items shipped, destination of the shipment
+        [Key]
+        public int ShipmentId { get; set; }
+        public DateTime ShipDate { get; set; }
+        public string Destination { get; set; }
+
+        public ICollection<ShipmentItem> ShipmentItems { get; set; }
     }
 }

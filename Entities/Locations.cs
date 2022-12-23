@@ -1,9 +1,17 @@
-﻿using werehouseManagement.Entities.Base;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using warehouseManagement.Entities.Base;
 
-namespace werehouseManagement.NewFolder
+namespace warehouseManagement.NewFolder
 {
     class Locations
     {
-       //aisle, shelf, bin number
+        [Key]
+        public int LocationId { get; set; }
+        public string Aisle { get; set; }
+        public string Shelf { get; set; }
+        public string Bin { get; set; }
+
+        public ICollection<Inventory> Inventory { get; set; }
     }
 }

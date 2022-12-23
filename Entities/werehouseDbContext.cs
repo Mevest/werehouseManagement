@@ -1,9 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace werehouseManagement.NewFolder
+namespace warehouseManagement.NewFolder
 {
-    class werehouseDbContext: DbContext
+    class warehouseDbContext: DbContext
     {
+        public warehouseDbContext(DbContextOptions<warehouseDbContext> options)
+           : base(options)
+        {
+        }
+
         public DbSet<Inventory> Inventory { get; set; }
         public DbSet<Suppliers> Suppliers { get; set; }
         public DbSet<Customers> Customers { get; set; }

@@ -1,9 +1,17 @@
-﻿using werehouseManagement.Entities.Base;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Windows.Controls;
+using warehouseManagement.Entities.Base;
 
-namespace werehouseManagement.NewFolder
+namespace warehouseManagement.NewFolder
 {
     class Customers : BaseEntity
     {
-        //customer name, contact information, items ordered
+        [Key]
+        public int CustomerId { get; set; }
+        public string Name { get; set; }
+        public string ContactInformation { get; set; }
+
+        public ICollection<Orders> Orders { get; set; }
     }
 }

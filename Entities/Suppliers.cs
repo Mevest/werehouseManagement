@@ -1,9 +1,16 @@
-﻿using werehouseManagement.Entities.Base;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using warehouseManagement.Entities.Base;
 
-namespace werehouseManagement.NewFolder
+namespace warehouseManagement.NewFolder
 {
     class Suppliers
     {
-        //Suppliers name, contact, items they supply
+        [Key]
+        public int SupplierId { get; set; }
+        public string Name { get; set; }
+        public string ContactInformation { get; set; }
+
+        public ICollection<Inventory> Inventory { get; set; }
     }
 }

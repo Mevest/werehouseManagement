@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace werehouseManagement.Entities.Base
+namespace warehouseManagement.Entities.Base
 {
     public class BaseEntity
     {

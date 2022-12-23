@@ -1,9 +1,17 @@
-﻿using werehouseManagement.Entities.Base;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using warehouseManagement.Entities.Base;
 
-namespace werehouseManagement.NewFolder
+namespace warehouseManagement.NewFolder
 {
     class Inventory
     {
-        //item name, description, quantity, location
+        public int ItemId { get; set; }
+        public string ItemName { get; set; }
+        public string Description { get; set; }
+        public int Quantity { get; set; }
+
+        [ForeignKey("Locations")]
+        public int LocationId { get; set; }
+        public Locations Locations { get; set; }
     }
 }

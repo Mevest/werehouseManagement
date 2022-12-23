@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System;
-using warehouseManagement.Entities.Base;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using warehouseManagement.NewFolder;
 
-namespace warehouseManagement.NewFolder
+namespace warehouseManagement.Entities.Base
 {
-    class Receivings
+    class ReceivingItem
     {
         [Key]
         public int ReceivingId { get; set; }
