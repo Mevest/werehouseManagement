@@ -9,16 +9,15 @@ using warehouseManagement.NewFolder;
 
 namespace warehouseManagement.Entities.Base
 {
-    class ReceivingItem
+    class ReceivingItem : BaseEntity
     {
-        [Key]
+        [ForeignKey("Inventory")]
+        public int ItemId { get; set; }
+        public Inventory Inventory { get; set; }
+        public int Quantity { get; set; }
+
+        [ForeignKey("Receiving")]
         public int ReceivingId { get; set; }
-        public DateTime ReceivingDate { get; set; }
-
-        [ForeignKey("Supplier")]
-        public int SupplierId { get; set; }
-        public Suppliers Supplier { get; set; }
-
-        public ICollection<ReceivingItem> ReceivingItems { get; set; }
+        public Receiving Receiving { get; set; }
     }
 }

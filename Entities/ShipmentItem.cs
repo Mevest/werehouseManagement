@@ -9,11 +9,8 @@ using warehouseManagement.NewFolder;
 
 namespace warehouseManagement.Entities.Base
 {
-    class ShipmentItem
+    class ShipmentItem : BaseEntity
     {
-        [Key]
-        public int ShipmentItemId { get; set; }
-
         [ForeignKey("Inventory")]
         public int ItemId { get; set; }
         public Inventory Inventory { get; set; }
@@ -21,6 +18,6 @@ namespace warehouseManagement.Entities.Base
 
         [ForeignKey("Shipment")]
         public int ShipmentId { get; set; }
-        public Shipments Shipments { get; set; }
+        public Shipment Shipment { get; set; }
     }
 }

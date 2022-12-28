@@ -5,10 +5,8 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.NewFolder
 {
-    class Shipments
+    class Shipment : BaseEntity
     {
-        [Key]
-        public int ShipmentId { get; set; }
         public DateTime ShipDate { get; set; }
         public string Destination { get; set; }
 

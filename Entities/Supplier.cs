@@ -4,10 +4,8 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.NewFolder
 {
-    class Suppliers
+    class Supplier : BaseEntity
     {
-        [Key]
-        public int SupplierId { get; set; }
         public string Name { get; set; }
         public string ContactInformation { get; set; }
 

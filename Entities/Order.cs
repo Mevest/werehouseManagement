@@ -6,16 +6,14 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.NewFolder
 {
-    class Orders
+    class Order : BaseEntity
     {
-        [Key]
-        public int OrdersId { get; set; }
-        public DateTime OrdersDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
-        public Customers Customers { get; set; }
+        public Customer Customer { get; set; }
 
-        public ICollection<OrderItem> OrderItem { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

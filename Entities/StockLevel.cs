@@ -4,11 +4,8 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.NewFolder
 {
-    class StockLevels
+    class StockLevel : BaseEntity
     {
-        [Key]
-        public int StockLevelId { get; set; }
-
         [ForeignKey("Inventory")]
         public int ItemId { get; set; }
         public Inventory Inventory { get; set; }

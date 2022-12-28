@@ -5,13 +5,11 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.NewFolder
 {
-    class Customers : BaseEntity
+    class Customer : BaseEntity
     {
-        [Key]
-        public int CustomerId { get; set; }
         public string Name { get; set; }
         public string ContactInformation { get; set; }
 
-        public ICollection<Orders> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
