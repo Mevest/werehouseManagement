@@ -2,13 +2,13 @@
 using System.ComponentModel.DataAnnotations;
 using warehouseManagement.Entities.Base;
 
-namespace warehouseManagement.NewFolder
+namespace warehouseManagement.Entities
 {
     class Supplier : BaseEntity
     {
-        public string Name { get; set; }
-        public string ContactInformation { get; set; }
+        public string Name { get; set; } = null!;
+        public string ContactInformation { get; set; } = null!;
 
-        public ICollection<Inventory> Inventory { get; set; }
+        public ICollection<Inventory> Inventory { get; set; } = null!;
     }
 }

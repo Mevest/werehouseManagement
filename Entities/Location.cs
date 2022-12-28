@@ -2,14 +2,14 @@
 using System.ComponentModel.DataAnnotations;
 using warehouseManagement.Entities.Base;
 
-namespace warehouseManagement.NewFolder
+namespace warehouseManagement.Entities
 {
     public class Location : BaseEntity
     {
-        public string Aisle { get; set; }
-        public string Shelf { get; set; }
-        public string Bin { get; set; }
+        public string Aisle { get; set; } = null!;
+        public string Shelf { get; set; } = null!;
+        public string Bin { get; set; } = null!;
 
-        public ICollection<Inventory> Inventory { get; set; }
+        public ICollection<Inventory> Inventory { get; set; } = null!;
     }
 }

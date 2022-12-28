@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using warehouseManagement.Entities.Base;
 
-namespace warehouseManagement.NewFolder
+namespace warehouseManagement.Entities
 {
     class Receiving : BaseEntity
     {
@@ -14,6 +14,6 @@ namespace warehouseManagement.NewFolder
         public int SupplierId { get; set; }
         public Supplier Supplier { get; set; }
 
-        public ICollection<ReceivingItem> ReceivingItems { get; set; }
+        public ICollection<ReceivingItem> ReceivingItems { get; set; } = null!;
     }
 }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using warehouseManagement.NewFolder;
+using warehouseManagement.Entities;
 
 namespace warehouseManagement.Entities.Base
 {
@@ -13,11 +13,11 @@ namespace warehouseManagement.Entities.Base
     {
         [ForeignKey("Inventory")]
         public int ItemId { get; set; }
-        public Inventory Inventory { get; set; }
+        public Inventory Inventory { get; set; } = null!;
         public int Quantity { get; set; }
 
         [ForeignKey("Order")]
         public int OrderId { get; set; }
-        public Order Order { get; set; }
+        public Order Order { get; set; } = null!;
     }
 }
