@@ -4,7 +4,7 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.Entities
 {
-    class Supplier : BaseEntity
+    public class Supplier : BaseEntity
     {
         public string Name { get; set; } = null!;
         public string ContactInformation { get; set; } = null!;

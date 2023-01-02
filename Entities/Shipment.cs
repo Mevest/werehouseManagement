@@ -5,7 +5,7 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.Entities
 {
-    class Shipment : BaseEntity
+    public class Shipment : BaseEntity
     {
         public DateTime ShipDate { get; set; }
         public string Destination { get; set; } = null!;

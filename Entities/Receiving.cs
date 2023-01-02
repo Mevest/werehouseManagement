@@ -6,7 +6,7 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.Entities
 {
-    class Receiving : BaseEntity
+    public class Receiving : BaseEntity
     {
         public DateTime ReceivingDate { get; set; }
 

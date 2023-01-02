@@ -9,7 +9,7 @@ using warehouseManagement.Entities;
 
 namespace warehouseManagement.Entities.Base
 {
-    class OrderItem : BaseEntity
+    public class OrderItem : BaseEntity
     {
         [ForeignKey("Inventory")]
         public int ItemId { get; set; }

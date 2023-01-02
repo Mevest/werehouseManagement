@@ -6,7 +6,7 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.Entities
 {
-    class Order : BaseEntity
+    public class Order : BaseEntity
     {
         public DateTime OrderDate { get; set; }
 

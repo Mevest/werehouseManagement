@@ -4,7 +4,7 @@ using warehouseManagement.Entities.Base;
 
 namespace warehouseManagement.Entities
 {
-    class StockLevel : BaseEntity
+    public class StockLevel : BaseEntity
     {
         [ForeignKey("Inventory")]
         public int ItemId { get; set; }
