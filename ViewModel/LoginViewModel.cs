@@ -4,15 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Security;
+using System.Runtime.InteropServices;
+using System.Drawing.Text;
+using System.Windows;
+using System.Net.Mail;
+using System.Net;
 
 namespace warehouseManagement.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
         private string _username;
-        private string _password;
-        private string _errorMessage;
+        private SecureString _password;
+        private string _errorMessage = "Wrong password";
         private bool _isViewVisible = true;
+
 
         public string Username
         {
@@ -26,7 +33,7 @@ namespace warehouseManagement.ViewModel
                 OnPropertyChanged(nameof(Username));
             }
         }
-        public string Password
+        public SecureString Password
         {
             get
             {
@@ -82,7 +89,9 @@ namespace warehouseManagement.ViewModel
 
             if (string.IsNullOrWhiteSpace(Username) || Username.Length < 3 ||
                 Password == null || Password.Length < 3)
+            {
                 validData = false;
+            }
             else
                 validData = true;
 
@@ -91,12 +100,73 @@ namespace warehouseManagement.ViewModel
 
         private void ExecuteLoginCommand(object obj)
         {
-            throw new NotImplementedException();
+            string correctPassword = "admin";
+            SecureString securePassword = new SecureString();
+            foreach(char c in correctPassword)
+            {
+                securePassword.AppendChar(c);
+            }
+
+
+
+            if(Username == "admin" && IsPasswordValid(securePassword,_password))
+            IsViewVisible = false;
+            else
+            {
+                MessageBox.Show(ErrorMessage);
+                CreateTimeoutTestMessage();
+                Application.Current.Shutdown();
+            }
         }
 
         private void ExecuteRecoverPassCommand(string username, string email)
         {
             throw new NotImplementedException();
+        }
+
+        private bool IsPasswordValid(SecureString referencePassword, SecureString password)
+        {
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(password);
+                string plainTextPassword = Marshal.PtrToStringUni(valuePtr);
+
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(referencePassword);
+                string plainTextReferencePassword = Marshal.PtrToStringUni(valuePtr);
+
+                return plainTextReferencePassword.Equals(plainTextPassword, StringComparison.Ordinal);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
+        }
+
+        public static void CreateTimeoutTestMessage()
+        {
+            string to = "maciej.ciemienga@gmail.com";
+            string from = "warehousemanagementmaciejtest@gmail.com";
+            string subject = "Secure Information";
+            string body = @"Someone try to log in to your warehouse. Please check out the cameras";
+            MailMessage message = new MailMessage(from, to, subject, body);
+            SmtpClient client = new SmtpClient("smtp.google.com");
+            client.Port = 587;
+            Console.WriteLine("Changing time out from {0} to 100.", client.Timeout);
+            client.Timeout = 100;
+            // Credentials are necessary if the server requires the client 
+            // to authenticate before it will send e-mail on the client's behalf.
+            client.Credentials = CredentialCache.DefaultNetworkCredentials;
+
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}",
+                      ex.ToString());
+            }
         }
 
     }

@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:warehouseManagement.View"
+        xmlns:viewModel="clr-namespace:warehouseManagement.ViewModel"
+        xmlns:controls="clr-namespace:warehouseManagement.Controls"
         mc:Ignorable="d"
         Title="LoginView" Height="550" Width="800"
         WindowStyle="None"
@@ -15,7 +17,16 @@
         >
     <Window.Resources>
         <ImageBrush x:Key="backgroundImage" ImageSource="/Images/background-img.png"></ImageBrush>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"></BooleanToVisibilityConverter>
     </Window.Resources>
+    
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+
+    <Window.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BoolToVisibility}"></Binding>
+    </Window.Visibility>
     <Border>
         <Border.Background>
             <ImageBrush ImageSource="/Images/background-img.png" Stretch="Fill" Opacity="1"/>
@@ -26,15 +37,15 @@
             Opacity="0.90">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF3F244A" Offset="0.0"/>
-                    <GradientStop Color="#FF3E3A50" Offset="0.5"/>
-                    <GradientStop Color="#FFF7B0FF" Offset="1"/>
+                    <GradientStop Color="{StaticResource WindowBorderColor1}" Offset="0.0"/>
+                    <GradientStop Color="{StaticResource WindowBorderColor2}" Offset="0.5"/>
+                    <GradientStop Color="{StaticResource WindowBorderColor3}" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#FF384B71" Offset="0.0"/>
-                    <GradientStop Color="#FF203050" Offset="0.75"/>
+                    <GradientStop Color="{StaticResource WindowBackgroundColor1}" Offset="0.0"/>
+                    <GradientStop Color="{StaticResource WindowBackgroundColor2}" Offset="0.75"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -143,6 +154,7 @@
                                FontFamily="Comic Sans MS"
                                Margin="0,50,0,0"/>
                     <TextBox   x:Name="txtLogin"
+                               Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                                FontSize="18"
                                Foreground="AliceBlue"
                                FontWeight="Medium"
@@ -165,25 +177,18 @@
                                FontWeight="Medium"
                                FontFamily="Comic Sans MS"
                                Margin="0,10,0,0"/>
-                    <PasswordBox   x:Name="txtPassword"
+                    <controls:CustomPasswordBox
+                        Password="{Binding Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        Margin="0,5,0,0">
+                    </controls:CustomPasswordBox>
+                    <TextBlock Text="{Binding ErrorMessage}"
                                FontSize="18"
                                Foreground="AliceBlue"
                                FontWeight="Medium"
                                FontFamily="Comic Sans MS"
-                               CaretBrush="AliceBlue"
-                               BorderBrush="#FF33569E"
-                               BorderThickness="0,0,0,3"
-                               Margin="0,5,0,0"
-                               Padding="20,0,0,0">
-                        <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Images/password-icon.png"
-                                        Stretch="none"
-                                        AlignmentX="Left"
-                                        Opacity="0.7"/>
-                        </PasswordBox.Background>
-
-                    </PasswordBox>
-
+                               Margin="0,10,0,0"
+                               TextWrapping="Wrap"/>
+                    
                     <Button x:Name="btnLogin"
                             BorderThickness="0"
                             Content="L o g i n"
@@ -192,7 +197,7 @@
                             FontWeight="Bold"
                             FontSize="18"
                             Cursor="Hand"
-                            Click="btnExit_Click"
+                            Command="{Binding LoginCommand}"
                             >
                         <Button.Style>
                             <Style TargetType="Button">
