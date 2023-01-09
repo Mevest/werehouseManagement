@@ -31,5 +31,15 @@ namespace warehouseManagement.View
                 DragMove();
             }
         }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

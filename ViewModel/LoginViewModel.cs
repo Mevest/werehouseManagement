@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Security;
 using System.Runtime.InteropServices;
-using System.Drawing.Text;
 using System.Windows;
 using System.Net.Mail;
 using System.Net;
