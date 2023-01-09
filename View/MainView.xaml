@@ -40,18 +40,29 @@
                     Grid.Column="0">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.8">
-                        <GradientStop Color="{StaticResource WindowBackgroundColor2}"></GradientStop>
-                        <GradientStop Color="{StaticResource WindowBorderColor3}"></GradientStop>
+                        <GradientStop Color="{StaticResource WindowBackgroundColor2}" Offset="0"/>
+                        <GradientStop Color="{StaticResource WindowBackgroundColor1}" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="35"
+                                Margin="15,25,0,40">
+                        <Image Source="/Images/Logo.png"/>
+                        <TextBlock Text="warehouseManagement"/>
+
+                    </StackPanel>
+                </StackPanel> 
                 
             </Border>
 
             <Border CornerRadius="0,20,20,0"
                     Grid.Column="1">
                 <Border.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="{StaticResource WindowBackgroundColor1}"/>
+                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                        <GradientStop Color="{StaticResource WindowBackgroundColor1}" Offset="0"/>
+                        <GradientStop Color="{StaticResource WindowBackgroundColor2}" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
