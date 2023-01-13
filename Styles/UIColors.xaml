@@ -29,8 +29,26 @@
     <SolidColorBrush x:Key="Color10" Color="#008E97"/>
     <SolidColorBrush x:Key="MainMenuHoover" Color="#FF24365A"/>
     <SolidColorBrush x:Key="MainMenuActive" Color="#FF24365A"/>
-    
+    <SolidColorBrush x:Key="SearchFontColor1" Color="#999999"/>
+
     <ImageBrush x:Key="backgroundImage" ImageSource="/Images/background-img.png"></ImageBrush>
     <BooleanToVisibilityConverter x:Key="BoolToVisibility"></BooleanToVisibilityConverter>
+
+    <Style x:Key="SearchBox" TargetType="TextBox">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource SearchFontColor1}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBoxBase">
+                    <Border x:Name="border" CornerRadius="5" BorderBrush="{StaticResource SearchFontColor1}" Background="LightGray">
+                        <ScrollViewer x:Name="Scroll_Content" Focusable="False" HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+
+
 
 </ResourceDictionary>
