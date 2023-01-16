@@ -5,6 +5,6 @@ namespace warehouseManagement.Entities.Base
     public class BaseEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
     }
 }

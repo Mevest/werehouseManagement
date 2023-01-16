@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using warehouseManagement.Entities;
 
@@ -11,9 +12,11 @@ using warehouseManagement.Entities;
 namespace warehouseManagement.Migrations
 {
     [DbContext(typeof(warehouseDbContext))]
-    partial class warehouseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230119141915_aktualizacja klientow")]
+    partial class aktualizacjaklientow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Base.OrderItem", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
@@ -39,7 +42,7 @@ namespace warehouseManagement.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -50,11 +53,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Base.ReceivingItem", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
@@ -65,7 +68,7 @@ namespace warehouseManagement.Migrations
                     b.Property<int>("ReceivingId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -76,11 +79,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Base.ShipmentItem", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
@@ -91,7 +94,7 @@ namespace warehouseManagement.Migrations
                     b.Property<int>("ShipmentId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -102,11 +105,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Customer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Company")
                         .IsRequired()
@@ -128,18 +131,18 @@ namespace warehouseManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("warehouseManagement.Entities.Inventory", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -155,25 +158,25 @@ namespace warehouseManagement.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplierID")
+                    b.Property<int?>("SupplierId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("LocationId");
 
-                    b.HasIndex("SupplierID");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Inventory");
                 });
 
             modelBuilder.Entity("warehouseManagement.Entities.Location", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Aisle")
                         .IsRequired()
@@ -187,18 +190,18 @@ namespace warehouseManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("warehouseManagement.Entities.Order", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -206,7 +209,7 @@ namespace warehouseManagement.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
@@ -215,11 +218,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Receiving", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("ReceivingDate")
                         .HasColumnType("datetime2");
@@ -227,7 +230,7 @@ namespace warehouseManagement.Migrations
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("SupplierId");
 
@@ -236,11 +239,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Shipment", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Destination")
                         .IsRequired()
@@ -249,18 +252,18 @@ namespace warehouseManagement.Migrations
                     b.Property<DateTime>("ShipDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Shipments");
                 });
 
             modelBuilder.Entity("warehouseManagement.Entities.StockLevel", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CurrentLevel")
                         .HasColumnType("int");
@@ -274,7 +277,7 @@ namespace warehouseManagement.Migrations
                     b.Property<int>("MinimumLevel")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -283,11 +286,11 @@ namespace warehouseManagement.Migrations
 
             modelBuilder.Entity("warehouseManagement.Entities.Supplier", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -301,7 +304,7 @@ namespace warehouseManagement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Suppliers");
                 });
@@ -373,7 +376,7 @@ namespace warehouseManagement.Migrations
 
                     b.HasOne("warehouseManagement.Entities.Supplier", null)
                         .WithMany("Inventory")
-                        .HasForeignKey("SupplierID");
+                        .HasForeignKey("SupplierId");
 
                     b.Navigation("Location");
                 });

@@ -6,9 +6,9 @@ namespace warehouseManagement.Entities
 {
     public class Location : BaseEntity
     {
-        public string Aisle { get; set; } = null!;
-        public string Shelf { get; set; } = null!;
-        public string Bin { get; set; } = null!;
+        public int Aisle { get; set; }
+        public int Shelf { get; set; }
+        public int Bin { get; set; }
 
         public ICollection<Inventory> Inventory { get; set; } = null!;
     }
